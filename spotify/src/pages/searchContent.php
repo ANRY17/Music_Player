@@ -12,6 +12,20 @@ if (isset($_GET['search'])) {
     $songs = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
+function addFavorite($song_id, $user_id) {
+  global $db;
+
+  $stmt = $db->prepare('INSERT INTO favorites (song_id, user_id) VALUES (:song_id, :user_id)');
+  $stmt->bindParam(':song_id', $song_id);
+  $stmt->bindParam(':user_id', $user_id);
+
+  if ($stmt->execute()) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 ?>
 <?php include('./components/navbar.php'); ?>
 <section>
