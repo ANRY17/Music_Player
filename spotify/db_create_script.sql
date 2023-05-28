@@ -52,6 +52,9 @@ CREATE TABLE `favourites` (
   CONSTRAINT `favourites_ibfk_2` FOREIGN KEY (`songID`) REFERENCES `songs` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
+ALTER TABLE favourites ADD COLUMN favourite_id INT AUTO_INCREMENT PRIMARY KEY;
+
+
 -- Insert data into table `groups`
 INSERT INTO `groups` (`id`, `groupName`) VALUES
 (1, 'admin'),
